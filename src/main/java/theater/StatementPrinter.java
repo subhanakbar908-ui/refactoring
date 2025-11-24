@@ -26,24 +26,18 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        int totalAmount = 0;
-        int volumeCredits = 0;
+        final int totalAmount = getTotalAmount();
+        final int volumeCredits = getTotalVolumeCredits();
         final StringBuilder result = new StringBuilder(
                 "Statement for " + invoice.getCustomer() + System.lineSeparator());
 
         for (Performance performance : invoice.getPerformances()) {
-
-            // add volume credits
-            volumeCredits += getVolumeCredits(performance);
-
             // print line for this order
             result.append(String.format(
                     "  %s: %s (%s seats)%n",
                     getPlay(performance).getName(),
                     usd(getAmount(performance)),
                     performance.getAudience()));
-
-            totalAmount += getAmount(performance);
         }
 
         result.append(String.format(
@@ -103,6 +97,32 @@ public class StatementPrinter {
                     / Constants.COMEDY_EXTRA_VOLUME_FACTOR;
         }
 
+        return result;
+    }
+
+    /**
+     * Returns the total volume credits across all performances in this invoice.
+     *
+     * @return the total volume credits
+     */
+    private int getTotalVolumeCredits() {
+        int result = 0;
+        for (Performance performance : invoice.getPerformances()) {
+            result += getVolumeCredits(performance);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the total amount (in cents) across all performances in this invoice.
+     *
+     * @return the total amount in cents
+     */
+    private int getTotalAmount() {
+        int result = 0;
+        for (Performance performance : invoice.getPerformances()) {
+            result += getAmount(performance);
+        }
         return result;
     }
 
