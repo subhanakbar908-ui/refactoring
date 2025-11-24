@@ -1,4 +1,5 @@
-f5ca04f (HEAD -> main, origin/main, origin/HEAD) "Task 2.1"
+0424622 (HEAD -> main, origin/main, origin/HEAD) "Task 2.2"
+f5ca04f "Task 2.1"
 9d4de92 "Task 1.2"
 5f217c0 "Task 1.1"
 6638b8e "Task1.1"
