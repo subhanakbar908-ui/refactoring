@@ -1,2 +1,5 @@
-6638b8e (HEAD -> main, origin/main, origin/HEAD) "Task1.1"
+f5ca04f (HEAD -> main, origin/main, origin/HEAD) "Task 2.1"
+9d4de92 "Task 1.2"
+5f217c0 "Task 1.1"
+6638b8e "Task1.1"
 90312dc Initial commit
